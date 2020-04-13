@@ -10,6 +10,10 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+  <!-- fontawesmone -->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
 
   <title>😷 Confinement Simulator 2020 - Covid-19 Edition</title>
@@ -23,73 +27,87 @@
 
 <body class="bg-light">
 
-<div class="container pt-5">
+  <div class="container pt-5">
 
-  <h1 class="text-center  display-5">Progression du confinement </h1>
-  <h2 class="my-0 text-center display-4"><strong id="daysTodo"></strong> <strong>jours</strong> restants</h2>
+    <h1 class="text-center  display-5">Progression du confinement </h1>
+    <h2 class="my-0 text-center display-4"><strong id="daysTodo"></strong> <strong>jours</strong> restants</h2>
 
-  <div class="jumbotron mt-5 bg-white border border-primary">    
-    <span id="progress" class="display-1 my-5 text-center"></span>
-    
-    <div class="progress" style="height: 3em">
-      <div id="progress-bar" class="progress-bar progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-      aria-valuenow="0" style="width: 0%"></div>
+    <div class="jumbotron mt-5 bg-white border border-primary">
+      <span id="progress" class="display-1 my-5 text-center"></span>
+
+      <div class="progress" style="height: 3em">
+        <div id="progress-bar" class="progress-bar progress-bar-striped" role="progressbar" aria-valuemin="0"
+          aria-valuemax="100" aria-valuenow="0" style="width: 0%"></div>
+      </div>
+      <p class="my-0 text-right" style="font-size:130%">Déjà <span id="daysDone"></span> jours confinés</p>
+
     </div>
-    <p class="my-0 text-right" style="font-size:130%">Déjà <span id="daysDone"></span> jours confinés</p>
 
   </div>
 
-</div>
+  <footer class="fixed-bottom py-3 bg-secondary">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6 text-white">
+          <p>#RestezChezVous</p>
+        </div>
+        <div class="col-6 text-right">
+          <a href="https://github.com/natinusala/progression-confinement-france"><i class="fa fa-github text-dark fa-2x"></i></a>
+          <a href="https://twitter.com/natinusala/"><i class="fa fa-twitter text-dark fa-2x"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-<!-- Depuis https://gist.github.com/dsample/f847e2cf598fd973240d -->
-<script type="text/javascript">
-  function getDaysRemaining(endtime) {
-    var t = Date.parse(endtime) - Date.parse(new Date());
-    var days = Math.floor(t / (1000 * 60 * 60 * 24));
-    return days;
-  }
-  function getTimeSince(starttime) {
-    var t = Date.parse(new Date()) - Date.parse(starttime);
-    var days = Math.floor(t / (1000 * 60 * 60 * 24));
-    var weeks = Math.floor(days / 7);
-    var daysOfWeek = days;
-    return {
-      'weeks': weeks,
-      'days': daysOfWeek
-    };
-  }
+  <!-- Depuis https://gist.github.com/dsample/f847e2cf598fd973240d -->
+  <script type="text/javascript">
+    function getDaysRemaining(endtime) {
+      var t = Date.parse(endtime) - Date.parse(new Date());
+      var days = Math.floor(t / (1000 * 60 * 60 * 24));
+      return days;
+    }
+    function getTimeSince(starttime) {
+      var t = Date.parse(new Date()) - Date.parse(starttime);
+      var days = Math.floor(t / (1000 * 60 * 60 * 24));
+      var weeks = Math.floor(days / 7);
+      var daysOfWeek = days;
+      return {
+        'weeks': weeks,
+        'days': daysOfWeek
+      };
+    }
 
-  function getPercentage(starttime, endtime) {
-    startDate = Date.parse(starttime);
-    endDate = Date.parse(endtime);
+    function getPercentage(starttime, endtime) {
+      startDate = Date.parse(starttime);
+      endDate = Date.parse(endtime);
 
-    diff = endDate - startDate;
-    totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff = endDate - startDate;
+      totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-    var progressDiff = Date.parse(new Date()) - Date.parse(starttime);
-    var progressDays = Math.floor(progressDiff / (1000 * 60 * 60 * 24));
+      var progressDiff = Date.parse(new Date()) - Date.parse(starttime);
+      var progressDays = Math.floor(progressDiff / (1000 * 60 * 60 * 24));
 
-    decimal = progressDays / totalDays;
-    precision = 10000
+      decimal = progressDays / totalDays;
+      precision = 10000
 
-    percentage = Math.floor(decimal * 100 * precision) / precision;
-    return percentage
-  }
+      percentage = Math.floor(decimal * 100 * precision) / precision;
+      return percentage
+    }
 
-  var startDate = '2020-03-17';
-  var endDate = '2020-05-11';
+    var startDate = '2020-03-17';
+    var endDate = '2020-05-11';
 
-  var timeGone = getTimeSince(startDate);
-  var daysLeft = getDaysRemaining(endDate);
-  var percentComplete = getPercentage(startDate, endDate);
+    var timeGone = getTimeSince(startDate);
+    var daysLeft = getDaysRemaining(endDate);
+    var percentComplete = getPercentage(startDate, endDate);
 
-  document.getElementById('progress-bar').style.width = percentComplete.toString() + '%';
-  document.getElementById('progress-bar').setAttribute("aria-valuenow", percentComplete.toString());
-  document.getElementById('progress').textContent = percentComplete.toString() + "%";
+    document.getElementById('progress-bar').style.width = percentComplete.toString() + '%';
+    document.getElementById('progress-bar').setAttribute("aria-valuenow", percentComplete.toString());
+    document.getElementById('progress').textContent = percentComplete.toString() + "%";
 
-  document.getElementById('daysDone').textContent = timeGone['days'].toString();
- document.getElementById('daysTodo').textContent =  daysLeft.toString();
-</script>
+    document.getElementById('daysDone').textContent = timeGone['days'].toString();
+    document.getElementById('daysTodo').textContent = daysLeft.toString();
+  </script>
 </body>
 
 </html>
