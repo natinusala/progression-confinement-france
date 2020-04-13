@@ -22,6 +22,13 @@
     body {
       font-family: 'Quicksand', sans-serif !important;
     }
+
+    .dotted-underline-help
+    {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      cursor: help;
+    }
   </style>
 </head>
 
@@ -39,7 +46,7 @@
         <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0"
           aria-valuemax="100" aria-valuenow="0" style="width: 0%"></div>
       </div>
-      <p class="my-0 text-right" style="font-size:130%">(déjà <span id="daysDone"></span> jours confinés)</p>
+      <p class="my-0 text-right" style="font-size:130%"><span class="dotted-underline-help" data-toggle="tooltip" data-placement="bottom" title="Période de confinement du 17/03 au 11/05">(déjà <span id="daysDone"></span> jours confinés sur un total de <span id="daysTotal"></span>)</span></p>
 
     </div>
 
@@ -106,21 +113,30 @@
       var endDate = '2020-05-11';
 
       var timeGone = getTimeSince(startDate);
+      var daysDone = timeGone['days'];
       var daysLeft = getDaysRemaining(endDate);
+      var total = daysDone + daysLeft;
       var percentComplete = getPercentage(startDate, endDate);
 
       document.getElementById('progress-bar').style.width = percentComplete.toString() + '%';
       document.getElementById('progress-bar').setAttribute("aria-valuenow", percentComplete.toString());
       document.getElementById('progress').textContent = percentComplete.toString() + "%";
 
-      document.getElementById('daysDone').textContent = Math.floor(timeGone['days'].toString());
-      document.getElementById('daysTodo').textContent = Math.floor(daysLeft.toString());
+      document.getElementById('daysDone').textContent = Math.floor(daysDone).toString();
+      document.getElementById('daysTodo').textContent = Math.floor(daysLeft).toString();
+      document.getElementById('daysTotal').textContent = Math.floor(total).toString();
     }
 
     refresh();
 
     setInterval(refresh, 1000);
 
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+  <script>
+    $('.dotted-underline-help').tooltip();
   </script>
 </body>
 
