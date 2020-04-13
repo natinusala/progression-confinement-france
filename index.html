@@ -94,7 +94,7 @@
       var progressDays = progressDiff / (1000 * 60 * 60 * 24);
 
       decimal = progressDays / totalDays;
-      precision = 10000;
+      precision = 1000000;
 
       percentage = Math.floor(decimal * 100 * precision) / precision;
       return percentage;
@@ -113,11 +113,13 @@
       document.getElementById('progress-bar').setAttribute("aria-valuenow", percentComplete.toString());
       document.getElementById('progress').textContent = percentComplete.toString() + "%";
 
-      document.getElementById('daysDone').textContent = timeGone['days'].toString();
-      document.getElementById('daysTodo').textContent = daysLeft.toString();
+      document.getElementById('daysDone').textContent = Math.floor(timeGone['days'].toString());
+      document.getElementById('daysTodo').textContent = Math.floor(daysLeft.toString());
     }
 
     refresh();
+
+    setInterval(refresh, 1000);
 
   </script>
 </body>
