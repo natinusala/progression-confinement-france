@@ -35,6 +35,12 @@
       text-decoration-style: dotted;
       cursor: help;
     }
+
+    @media(max-width: 768px){
+      #progress{
+        font-size: 4rem;font-size: 12vw;
+      }
+    }
   </style>
 </head>
 
@@ -46,8 +52,10 @@
     <h2 class="my-0 text-center display-4"><strong id="daysTodo"></strong> <strong>jours</strong> restants</h2>
 
     <div class="jumbotron mt-5 bg-white border border-primary">
+      <!-- Percentage -->
       <span id="progress" class="display-1 my-5 text-center"></span>
 
+      <!-- progress bar -->
       <div class="progress" style="height: 3em">
         <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0"
           aria-valuemax="100" aria-valuenow="0" style="width: 0%"></div>
@@ -58,6 +66,7 @@
 
   </div>
 
+  <!-- footer -->
   <footer class="fixed-bottom py-3 bg-secondary">
     <div class="container-fluid">
       <div class="row">
