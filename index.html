@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand" />
 
-  <title>😷 Confinement Simulator 2020 - Covid-19 Edition</title>
+  <title>😷 Confinement Simulator 2020 - Covid-19 Edition - saison 2</title>
 
   <style>
     body {
@@ -49,7 +49,7 @@
   <div class="container pt-5">
 
     <h1 class="text-center  display-5">&#8987; Progression du confinement </h1>
-    <h2 class="my-0 text-center display-4"><strong id="daysTodo"></strong> <strong>jours</strong> restants</h2>
+    <h2 class="my-0 text-center display-4"><strong id="daysTodo">?</strong> <strong>jours</strong> restants</h2>
 
     <div class="jumbotron mt-5 bg-white border border-primary">
       <!-- Percentage -->
@@ -58,9 +58,9 @@
       <!-- progress bar -->
       <div class="progress" style="height: 3em">
         <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0"
-          aria-valuemax="100" aria-valuenow="0" style="width: 0%"></div>
+          aria-valuemax="100" aria-valuenow="10" style="width: 10%"></div>
       </div>
-      <p class="my-0 text-right" style="font-size:130%"><span class="dotted-underline-help" data-toggle="tooltip" data-placement="bottom" title="Période de confinement du 17/03 au 11/05">(déjà <span id="daysDone"></span> jours confinés sur un total de <span id="daysTotal"></span>)</span></p>
+      <p class="my-0 text-right" style="font-size:130%"><span class="dotted-underline-help" data-toggle="tooltip" data-placement="bottom" title="Période de confinement du 17/03 au 11/05">(déjà <span id="daysDone"></span> jours confinés sur un total de <span id="daysTotal">?</span>)</span></p>
 
     </div>
 
@@ -71,7 +71,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-6 text-white">
-          <p>#RestezChezVous</p>
+          <p>#RestezChezVous #EtLavezVousLesMainsPutainOnEnAGros</p>
         </div>
         <div class="col-6 text-right">
           <a target="_blank" href="https://github.com/natinusala/progression-confinement-france"><i class="fa fa-github text-dark fa-2x"></i></a>
@@ -124,8 +124,8 @@
 
     function refresh()
     {
-      var startDate = '2020-03-17';
-      var endDate = '2020-05-11';
+      var startDate = '2020-10-29';
+      var endDate = '2022-01-01';
 
       var timeGone = getTimeSince(startDate);
       var daysDone = timeGone['days'];
@@ -133,13 +133,14 @@
       var total = daysDone + daysLeft;
       var percentComplete = getPercentage(startDate, endDate);
 
-      document.getElementById('progress-bar').style.width = percentComplete.toString() + '%';
-      document.getElementById('progress-bar').setAttribute("aria-valuenow", percentComplete.toString());
-      document.getElementById('progress').textContent = percentComplete.toString() + "%";
+      // UNCOMMENT WHEN we have a real end date
+      // document.getElementById('progress-bar').style.width = percentComplete.toString() + '%';
+      // document.getElementById('progress-bar').setAttribute("aria-valuenow", percentComplete.toString());
+      // document.getElementById('progress').textContent = percentComplete.toString() + "%";
 
       document.getElementById('daysDone').textContent = Math.floor(daysDone).toString();
-      document.getElementById('daysTodo').textContent = Math.floor(daysLeft).toString();
-      document.getElementById('daysTotal').textContent = Math.floor(total).toString();
+      // document.getElementById('daysTodo').textContent = Math.floor(daysLeft).toString();
+      // document.getElementById('daysTotal').textContent = Math.floor(total).toString();
     }
 
     refresh();
