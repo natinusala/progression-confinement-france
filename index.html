@@ -66,25 +66,60 @@
 
     <div class="jumbotron mt-5 bg-white" style="cursor: default;">
       <ul class="list-group">
+
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Reconfinement</h5>
+            <span class="badge badge-primary badge-pill pt-2">En cours</span>
+          </div>
+          <p class="mb-1">Du 30/10/2020 au 27/11/2020</p>
+        </li>
+
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Confinement allégé</h5>
+            <span class="badge badge-light badge-pill pt-2">À venir</span>
+          </div>
+          <p class="mb-1">Du 28/11/2020 au 14/12/2020</p>
+          <small class="mb-1">Allégement des restrictions et réouverture des commerces</small>
+        </li>
+        
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Confinement de nuit</h5>
+            <span class="badge badge-light badge-pill pt-2">À venir</span>
+          </div>
+          <p class="mb-1">Du 15/12/2020 au 20/01/2021</p>
+          <small class="mb-1">Couvre-feu</small>
+        </li>
+      </ul>
+    </div>
+
+    <div class="jumbotron mt-5 bg-white" style="cursor: default;">
+      <ul class="list-group">
+    
         <li class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Confinement</h5>
             <span class="badge badge-success badge-pill pt-2">✅ Terminé</span>
           </div>
-          <p class="mb-1">Du 17/03 au 11/05</p>
-        </li>
-        
-        <li class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">Reconfinement</h5>
-            <span class="badge badge-secondary badge-pill pt-2">En cours</span>
+          <p class="mb-1">Du 17/03/2020 au 11/05/2020</p>
+          <div class="my-2">
+            <span>Vous avez débloqué :</span>
+            <ul class="list-group">
+              <li class="list-group-item align-items-baseline d-flex w-100 justify-content-between">😷 Masque<small class="text-muted">Objet</small></li>
+              <li class="list-group-item align-items-baseline d-flex w-100 justify-content-between">🍶 Gel hydroalcoolique<small class="text-muted">Objet</small></li>
+              <li class="list-group-item align-items-baseline d-flex w-100 justify-content-between"><span><i class="fa fa-file-text-o" aria-hidden="true"></i> Attestion de sortie</span><small class="text-muted">Objet</small></li>
+              <li class="list-group-item align-items-baseline list-group-item-success d-flex w-100 justify-content-between">Télétravail / télécole / chômage partiel<small class="text-muted">Compétence</small></li>
+            </ul>
           </div>
-          <p class="mb-1">A partir du 30/10, au moins jusqu'au 1er décembre</p>
         </li>
+
       </ul>
     </div>
 
   </div>
+
 
   <!-- footer -->
   <footer class="fixed-bottom py-3 bg-secondary">
@@ -145,7 +180,7 @@
     function refresh()
     {
       var startDate = '2020-10-29';
-      var endDate = '2020-11-30';
+      var endDate = '2021-01-20';
 
       var timeGone = getTimeSince(startDate);
       var daysDone = timeGone['days'];
@@ -168,8 +203,9 @@
 
   </script>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   <script>
     $('.dotted-underline-help').tooltip();
   </script>
